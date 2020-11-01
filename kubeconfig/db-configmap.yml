@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: decidim-k8s-db-config
+  labels:
+    app: decidim-k8s-db
+data:
+  DATABASE_HOST: database
+  POSTGRES_USER: semo

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: decidim-k8s-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: decidim-k8s-db
+  template:
+    metadata:
+      labels:
+        app: decidim-k8s-db
+    spec:
+      containers:
+        - name: decidim-k8s-db-pg
+          image: postgres:12.1
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: decidim-k8s-db-config
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: database
+      volumes:
+        - name: database
+          persistentVolumeClaim:
+            claimName: decidim-k8s-db-pv-claim
