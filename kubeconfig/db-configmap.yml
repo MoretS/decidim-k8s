@@ -6,4 +6,4 @@ metadata:
     app: decidim-k8s-db
 data:
   DATABASE_HOST: database
-  POSTGRES_USER: semo
+  DATABASE_USERNAME: semo
