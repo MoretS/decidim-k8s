@@ -2,8 +2,8 @@ FROM ruby:2.5.3
 
 ENV BUNDLER_VERSION=2.1.4
 
-RUN apt-get install -y \
-    git imagemagick wget autoconf \
+RUN apt-get update && apt-get install -y \
+    git imagemagick wget autoconf postgresql postgresql-client \
     libssl-dev libyaml-dev libreadline-dev \
     zlib1g-dev libncurses5-dev libffi-dev libgdbm3 \
     libicu-dev \
