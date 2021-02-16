@@ -26,3 +26,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git_user_name: MoretS
           git_email: smoret1997@gmail.com
+          bundler_version: 2.1.4
