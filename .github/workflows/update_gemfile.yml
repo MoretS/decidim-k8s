@@ -2,7 +2,7 @@
 name: Update Gemfile
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/2 * * * *'
 
 jobs:
   bundle-update:
@@ -14,25 +14,14 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Install libicu-dev
-        run: sudo apt install libicu-dev
-
-      - name: Install bundler
-        run: 'gem install bundler:2.1.4'
-
-      - name: Setup ruby
+      - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.6.3
-          bundler-cache: true
+          ruby-version: 2.6
+        run: bundle update
 
-      - name: Install dependencies
-        run: bundle install
-
-      - name: Pull request on bundle update
-        uses: supermanner/pull-request-on-bundle-update@v1.0.1
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          git_user_name: MoretS
-          git_email: smoret1997@gmail.com
-          bundler_version: 2.1.4
+          branch: bump/update-gemfile
+          title: Update Gemfile
