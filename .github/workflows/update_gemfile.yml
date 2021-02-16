@@ -5,7 +5,7 @@ on:
     - cron: '*/2 * * * *'
 
 jobs:
-  bundle-update:
+  build:
     name: bundle update
     runs-on: ubuntu-latest
     steps:
@@ -17,7 +17,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.6
+          ruby-version: 2.6.3
         run: bundle update
 
       - name: Create Pull Request
