@@ -18,7 +18,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6.3
-        run: bundle update
+          run: bundle update
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
