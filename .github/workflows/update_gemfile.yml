@@ -13,6 +13,13 @@ jobs:
         uses: actions/checkout@v1
         with:
           fetch-depth: 1
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6.3
+          bundler-cache: true
+
       - name: Pull request on bundle update
         uses: supermanner/pull-request-on-bundle-update@v1.0.1
         with:
