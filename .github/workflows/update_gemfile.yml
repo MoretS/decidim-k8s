@@ -20,6 +20,9 @@ jobs:
           ruby-version: 2.6.3
           bundler-cache: true
 
+      - name: Install dependencies
+        run: bundle install
+
       - name: Pull request on bundle update
         uses: supermanner/pull-request-on-bundle-update@v1.0.1
         with:
