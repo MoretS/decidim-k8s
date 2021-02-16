@@ -5,23 +5,23 @@ on:
     - cron: '*/2 * * * *'
 
 jobs:
-  build:
-    name: bundle update
+  createPullRequest:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
-
-      - name: Setup Ruby
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6.3
-          run: bundle update
-
+      - name: Run bundle update
+        run: bundle update
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
+          commit-message: Bump Gemfile
           branch: bump/update-gemfile
-          title: Update Gemfile
+          title: 'Update Gemfile'
+
+
+
+
