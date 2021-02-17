@@ -14,7 +14,7 @@ jobs:
         uses: nanzm/get-time-action@v1.1
         with:
           timeZone: 1
-          format: 'YYYY-MM-DD-HH'
+          format: 'YYYY-MM-DD-HH-mm-ss'
 
         env:
           TIME: "${{ steps.time.outputs.time }}"
