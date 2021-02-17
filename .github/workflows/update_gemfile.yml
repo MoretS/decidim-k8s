@@ -16,9 +16,6 @@ jobs:
           timeZone: 1
           format: 'YYYY-MM-DD-HH-mm-ss'
 
-        env:
-          TIME: "${{ steps.time.outputs.time }}"
-
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -39,7 +36,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: Bump Gemfile
-          branch: 'bump/update-gemfile-${TIME}'
+          branch: "bump/update-gemfile-'${{ steps.time.outputs.time }}"
           title: 'Update Gemfile'
           body: |
             🚨ATTENTION🚨
