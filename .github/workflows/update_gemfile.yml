@@ -9,6 +9,16 @@ jobs:
     name: bundle update
     runs-on: ubuntu-latest
     steps:
+      - name: Get Time
+        id: time
+        uses: nanzm/get-time-action@v1.1
+        with:
+          timeZone: 1
+          format: 'YYYY-MM-DD-HH'
+
+        env:
+          TIME: "${{ steps.time.outputs.time }}"
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -29,8 +39,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: Bump Gemfile
-          branch: bump/update-gemfile
-          branch-suffix: timestamp
+          branch: 'bump/update-gemfile-${TIME}'
           title: 'Update Gemfile'
           body: |
             🚨ATTENTION🚨
