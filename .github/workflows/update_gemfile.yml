@@ -22,13 +22,20 @@ jobs:
       - name: Run bundle update
         run: bundle update
 
+      - name: Install migrations
+        run: bundle exec rake decidim:upgrade
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: Bump Gemfile
           branch: bump/update-gemfile
+          branch-suffix: timestamp
           title: 'Update Gemfile'
+          body: |
+            🚨ATTENTION🚨
 
+            Do not forget to update existing tests if necessary.
 
 
 
