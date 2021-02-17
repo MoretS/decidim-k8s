@@ -36,7 +36,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: Bump Gemfile
-          branch: "bump/update-gemfile-'${{ steps.time.outputs.time }}"
+          branch: "bump/update-gemfile-${{ steps.time.outputs.time }}"
           title: 'Update Gemfile'
           body: |
             🚨ATTENTION🚨
